@@ -6,6 +6,7 @@ body {
     margin: 0px;
     display: flex;
     flex-direction: column;
+    background-color: #1F2937;
 }
 
 a {
@@ -22,16 +23,11 @@ ul {
 
 .header {
     font-size: 18px;
-    background-color: #1F2937;
     color: #F9FAF8;
     text-shadow: 1px 1px 1px #233949;
     padding-bottom: 7%;
 }
 
-.content .link {
-    display: block;
-    padding: 14px;
-}
 
 .navbar {
     display: flex;
@@ -54,6 +50,11 @@ ul {
     color: #f9faf8af;
 }
 
+.content .link {
+    display: block;
+    padding: 14px;
+}
+
 #logo {
     font-size: 24px;
     font-weight: bold;
@@ -73,63 +74,4 @@ ul {
 .dropdown:hover .content {
     display: block;
     background-color: #242f3d;
-}
-
-.main {
-    display: flex;
-    background-color: #1F2937;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-
-.text {
-    margin-left: 10%;
-    color: #F9FAF8;
-    width: 25%;
-    flex: 0 1 auto;
-}
-
-.text p {
-    margin: 0px;
-    color: #E5E7EB;
-    padding-left: 20px;
-}
-
-.text .big {
-    font-size: 48px;
-    font-weight: bold;
-    padding-bottom: 6px;
-}
-
-.text .small {
-    font-size: 18px;
-}
-
-#button {
-    display: block;
-    margin-left: 20px;
-    margin-top: 6px;
-    margin-bottom: 50%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    font-size: 1.25rem;
-    text-align: center;
-    border: 2px solid black;
-    border-radius: 8px;
-    font-weight: bold;
-    color: #E5E7EB;
-    background-color: #3882F6;
-}
-
-.graphic {
-    flex: 0 0 auto;
-    width: 30%;
-    min-width: 30%;
-    height: 25%;
-    margin-right: 1%;
-    margin-left: auto;
-}
-
-#image {
-    height: 234px;
 }

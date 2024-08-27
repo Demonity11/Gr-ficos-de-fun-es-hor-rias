@@ -1,0 +1,24 @@
+.main h1 {
+    margin: 0px;
+    margin-left: 10%;
+    padding: 20px;
+    font-size: 48px;
+    color: #E5E7EB;
+}
+
+.form {
+    display: flex;
+    flex-flow: column wrap;
+    margin-left: 10%;
+    padding: 20px;
+    width: 25%;
+    gap: 14px;
+}
+.form input,button{
+    display: block;
+    height: 40px;
+    padding: 4px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 0px;
+}

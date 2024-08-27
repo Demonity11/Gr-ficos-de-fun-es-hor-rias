@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início</title>
+    <title>Espaço</title>
     <link rel="stylesheet" href="../static/header.css">
-    <link rel="stylesheet" href="../static/inicio.css">
+    <link rel="stylesheet" href="../static/posicao.css">
 </head>
 <body>
     <header class="header">
@@ -24,12 +24,11 @@
         </ul>
     </header>
     <main class="main">
-        <div class="text">
-            <p class="big">Crie gráficos de funções horárias!</p>
-            <p class="small">Analise gráficos feitos em tempo real para obter informações visuais de movimentos simples.</p>
-            <a id="button" href="/posicao">Começar</a>
-        </div>
-        <div class="graphic"><img id="image" alt="exemplo de gráfico" src="https://images8.alphacoders.com/106/1061990.jpg"></div>
+        <h1>Espaço</h1>
+        <form class="form" action="/result" method="post">
+            <input name="s0" placeholder="Posição inicial" autocomplete="off" autofocus>
+            <input name="v0" placeholder="Velocidade inicial" autocomplete="off">
+            <input name="ac" placeholder="Aceleração" autocomplete="off">
+            <button>Gerar Gráfico</button>
+        </form>
     </main>
-</body>
-</html>
