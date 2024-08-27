@@ -50,7 +50,7 @@ ul {
     color: #F9FAF8;
 }
 
-.link:hover {
+.link:hover,#funcoes:hover {
     color: #f9faf8af;
 }
 
@@ -80,14 +80,12 @@ ul {
     background-color: #1F2937;
     flex-wrap: wrap;
     flex-direction: row;
-    height: 30%;
 }
 
 .text {
     margin-left: 10%;
     color: #F9FAF8;
     width: 25%;
-    height: 20%;
     flex: 0 1 auto;
 }
 
@@ -105,6 +103,22 @@ ul {
 
 .text .small {
     font-size: 18px;
+}
+
+#button {
+    display: block;
+    margin-left: 20px;
+    margin-top: 6px;
+    margin-bottom: 50%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 1.25rem;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #E5E7EB;
+    background-color: #3882F6;
 }
 
 .graphic {
