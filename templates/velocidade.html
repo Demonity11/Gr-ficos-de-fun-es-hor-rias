@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velocidade</title>
     <link rel="stylesheet" href="../static/header.css">
-    <link rel="stylesheet" href="../static/posicao.css">
+    <link rel="stylesheet" href="../static/funcoes.css">
 </head>
 <body>
     <header class="header">
@@ -20,7 +20,7 @@
                     <a class="link" href="/espaco">Espaço</a>
                 </div>
             </div>
-            <li><a class="link" href="/sobre">Sobre</a></li>
+            <li id="sobre"><a class="link" href="/sobre">Sobre</a></li>
         </ul>
     </header>
     <main class="main">
@@ -28,6 +28,9 @@
         <form class="form" action="/result" method="post">
             <input name="s0" placeholder="Posição inicial" autocomplete="off" autofocus>
             <input name="ac" placeholder="Aceleração" autocomplete="off">
+            <input name="t" placeholder="Tempo" autocomplete="off">
             <button>Gerar Gráfico</button>
         </form>
     </main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.graphic {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 11%;
+    margin-right: 11%;
+}
+
