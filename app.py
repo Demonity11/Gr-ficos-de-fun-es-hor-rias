@@ -22,42 +22,57 @@ def espaco():
 
 @app.route("/result", methods=["POST"])
 def result():
+    equacao = ""
+    data = []
+
     t = request.form.get("t")
     if "." in t or "," in t:
         t = t.replace(",", ".") if "," in t else t
-        tempo_decimal = True
 
     t_arredondado = ceil(float(t))
-    tempo = [str(_)+"s" for _ in range(0, t_arredondado)]
-    tempo.append(t+"s")
+    label = [str(_)+"s" for _ in range(0, t_arredondado)]
+    tempo = [_ for _ in range(0, t_arredondado)]
+
+    label.append(t+"s")
+    tempo.append(float(t))
 
     s0 = request.form.get("s0")
-    if "." in s0 or "," in s0:
-        s0 = s0.replace(",", ".") if "," in s0 else s0
-
-    s0_arredondado = ceil(float(s0))
-    s0_ = s0_arredondado - float(s0)
+    if s0:
+        if "," in s0:
+            s0 = s0.replace(",", ".")
     
     ac = request.form.get("ac")
-    if "." in ac or "," in ac:
-        ac = ac.replace(",", ".") if "," in ac else ac
+    if ac:
+        if "," in ac:
+            ac = ac.replace(",", ".")
 
-    ac_arredondado = ceil(float(ac))
-    ac_ = ac_arredondado - float(ac) 
+    v0 = request.form.get("v0")
+    if v0:
+        if "," in v0:
+            v0 = v0.replace(",", ".")
 
-    if request.form.get("ac") and request.form.get("s0") and request.form.get("v0"):
-        s0 = request.form.get("s0")
-        ac = request.form.get("ac")
+    v = request.form.get("v")
+    if v:
+        if "," in v:
+            v = v.replace(",", ".")
 
-    elif request.form.get("ac") and request.form.get("s0"):
-        velocidade = [s0]
-        multiplicador = 1
-        for _ in range(s0_arredondado, s0_arredondado + ac_arredondado*len(tempo), ac_arredondado):
-            if _ > s0_arredondado:
-                velocidade.append(_ - (ac_*multiplicador + s0_))
-                multiplicador += 1
+    if ac and s0 and v0:
+        equacao = "Espaço"
+        for t in tempo:
+            v0Xt = float(v0)*t
+            acXt2 = (float(ac)/2)*t**2
+            data.append(float(s0) + v0Xt + acXt2)
 
-        if tempo_decimal:
-            velocidade[-1] = float(s0) + float(ac)*float(t)
+    elif ac and s0:
+        equacao = "Velocidade"
+        for t in tempo:
+            acXt = float(ac)*t
+            data.append(float(s0)+ acXt)
+    
+    elif v:
+        equacao = "Posição"
+        for t in tempo:
+            vXt = float(v)*t
+            data.append(float(s0) + vXt)
    
-        return render_template("result.html", tempo=tempo, velocidade=velocidade)
+    return render_template("result.html", label=label, data=data, equacao=equacao)

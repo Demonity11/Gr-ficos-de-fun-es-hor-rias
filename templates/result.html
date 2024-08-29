@@ -32,10 +32,10 @@
                 new Chart(ctx, {
                     type: "line",
                     data: {
-                        labels: {{ tempo | safe}},
+                        labels: {{ label | safe}},
                         datasets: [{
-                            label: "Velocidade (m/s)",
-                            data: {{ velocidade | safe}},
+                            label: {% if equacao == "Velocidade" %}"Velocidade (m/s)"{% elif equacao == "Posição" %}"Posição (m)"{% else %}"Espaço (m)"{% endif %},
+                            data: {{ data | safe}},
                             borderWidth: 2,
                             borderColor: "white",
                             backgroundColor: "white",
@@ -50,7 +50,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Gráfico da velocidade em função do tempo',
+                                text: {% if equacao == "Velocidade" %}"Gráfico da velocidade em função do tempo"{% elif equacao == "Posição" %}"Gráfico da posição em função do tempo"{% else %}"Gráfico da posição em função do tempo"{% endif %},
                                 font: {
                                     size: 20,
                                     color: "#F9FAF8"
