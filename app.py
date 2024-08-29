@@ -25,6 +25,7 @@ def result():
     equacao = ""
     data = []
 
+    #criação do eixo do tempo no gráfico + tratamento de valores com vírgula
     t = request.form.get("t")
     if "." in t or "," in t:
         t = t.replace(",", ".") if "," in t else t
@@ -36,6 +37,7 @@ def result():
     label.append(t+"s")
     tempo.append(float(t))
 
+    #tratamento dos valores para que o python possa ler sem problemas
     s0 = request.form.get("s0")
     if s0:
         if "," in s0:
@@ -56,6 +58,8 @@ def result():
         if "," in v:
             v = v.replace(",", ".")
 
+    #condição para determinação de qual equação estamos trabalhando + construção do eixo y que pode ser
+    #espaço, velocidade ou posição.
     if ac and s0 and v0:
         equacao = "Espaço"
         for t in tempo:
