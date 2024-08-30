@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.text {
+    margin-left: 10%;
+    color: #F9FAF8;
+    width: 25%;
+    flex: 0 1 auto;
+}
+
+.text p {
+    margin: 0px;
+    color: #E5E7EB;
+    padding-left: 20px;
+}
+
+.text .big {
+    font-size: 48px;
+    font-weight: bold;
+    padding-bottom: 6px;
+}
+
+.text .small {
+    font-size: 18px;
+}
+
+.graphic {
+    flex: 0 0 auto;
+    width: 30%;
+    min-width: 30%;
+    height: 25%;
+    margin-right: 10%;
+    margin-left: auto;
+}
+
+#image {
+    height: 234px;
+}
