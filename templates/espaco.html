@@ -26,10 +26,10 @@
     <main class="main">
         <h1>Espaço</h1>
         <form class="form" action="/result" method="post">
-            <input name="s0" placeholder="Posição inicial" autocomplete="off" autofocus>
-            <input name="v0" placeholder="Velocidade inicial" autocomplete="off">
-            <input name="ac" placeholder="Aceleração" autocomplete="off">
-            <input name="t" placeholder="Tempo" autocomplete="off">
+            <input type="number" name="s0" placeholder="Posição inicial" autocomplete="off" autofocus required>
+            <input type="number" name="v0" placeholder="Velocidade inicial" autocomplete="off" required>
+            <input type="number" name="ac" placeholder="Aceleração" autocomplete="off" required>
+            <input type="number" name="t" placeholder="Tempo" autocomplete="off" required>
             <button>Gerar Gráfico</button>
         </form>
     </main>

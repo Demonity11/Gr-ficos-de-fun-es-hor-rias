@@ -8,6 +8,10 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 def index():
     return render_template("index.html")
 
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+
 @app.route("/posicao")
 def posicao():
     return render_template("posicao.html")
@@ -24,18 +28,22 @@ def espaco():
 def result():
     equacao = ""
     data = []
+    #caso o tempo seja omitido de alguma forma, há um valor padrão
+    tempo = [_ for _ in range(11)]
+    label = [str(_)+"s" for _ in range(11)]
 
     #criação do eixo do tempo no gráfico + tratamento de valores com vírgula
     t = request.form.get("t")
-    if "." in t or "," in t:
-        t = t.replace(",", ".") if "," in t else t
+    if t:
+        if "," in t:
+            t = t.replace(",", ".")
 
-    t_arredondado = ceil(float(t))
-    label = [str(_)+"s" for _ in range(0, t_arredondado)]
-    tempo = [_ for _ in range(0, t_arredondado)]
+        t_arredondado = ceil(float(t))
+        label = [str(_)+"s" for _ in range(0, t_arredondado)]
+        tempo = [_ for _ in range(0, t_arredondado)]
 
-    label.append(t+"s")
-    tempo.append(float(t))
+        label.append(t+"s")
+        tempo.append(float(t))
 
     #tratamento dos valores para que o python possa ler sem problemas
     s0 = request.form.get("s0")
@@ -78,5 +86,10 @@ def result():
         for t in tempo:
             vXt = float(v)*t
             data.append(float(s0) + vXt)
-   
+
     return render_template("result.html", label=label, data=data, equacao=equacao)
+
+#essa rota serve para lidar com erros que só vão acontecer caso tentem editar o html
+@app.errorhandler(500)
+def error_page(error):
+    return render_template("error.html"), 500
