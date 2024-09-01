@@ -75,11 +75,11 @@ def result():
             acXt2 = (float(ac)/2)*t**2
             data.append(float(s0) + v0Xt + acXt2)
 
-    elif ac and s0:
+    elif ac and v0:
         equacao = "Velocidade"
         for t in tempo:
             acXt = float(ac)*t
-            data.append(float(s0)+ acXt)
+            data.append(float(v0)+ acXt)
     
     elif v:
         equacao = "Posição"
