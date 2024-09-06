@@ -34,7 +34,7 @@
                     data: {
                         labels: {{ label | safe}},
                         datasets: [{
-                            label: {% if equacao == "Velocidade" %}"Velocidade (m/s)"{% elif equacao == "Posição" %}"Posição (m)"{% else %}"Espaço (m)"{% endif %},
+                            label: {% if equacao == "Velocidade" %}"Velocidade ({{ unidade[0] }}/{{ unidade[1] }})"{% elif equacao == "Posição" %}"Posição ({{ unidade[0] }})"{% else %}"Espaço ({{ unidade[0] }})"{% endif %},
                             data: {{ data | safe}},
                             borderWidth: 2,
                             borderColor: "white",

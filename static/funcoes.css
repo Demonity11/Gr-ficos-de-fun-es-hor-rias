@@ -8,8 +8,6 @@
 
 .main h2 {
     margin: 0px;
-    margin-left: 10%;
-    padding-left: 20px;
     font-size: 24px;
     color: #E5E7EB;
 }
@@ -19,7 +17,7 @@
     flex-flow: column wrap;
     margin-left: 10%;
     padding: 20px;
-    width: 25%;
+    width: 28%;
     gap: 14px;
 }
 .form input,button{
@@ -29,4 +27,18 @@
     font-size: 18px;
     border-radius: 8px;
     border: 0px;
+}
+
+#unidade {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 16px;
+    width: 28%;
+    padding: 20px;
+    margin-left: 10%;
+}
+
+#unidade button {
+    height: 28px;
+    flex: 1 0 auto;
 }
