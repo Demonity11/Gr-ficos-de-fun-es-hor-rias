@@ -1,34 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "header.html" %}
+
+{% block head %}
+
     <title>Sobre</title>
-    <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="../static/funcoes.css">
     <link rel="stylesheet" href="../static/sobre.css">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<body>
-    <header class="header">
-        <ul class="navbar">
-            <li id="logo">Horárias</li>
-            <li><a class="link" href="/">Início</a></li>
-            <div class="dropdown">
-                <li id="funcoes">Funções</li>
-                <div class="content">
-                    <a class="link" href="/posicao">Posição</a>
-                    <a class="link" href="/velocidade">Velocidade</a>
-                    <a class="link" href="/espaco">Espaço</a>
-                </div>
-            </div>
-            <li id="sobre"><a class="link" href="/sobre">Sobre</a></li>
-        </ul>
-    </header>
+
+{% endblock %}
+
+{% block body %}
+
     <main class="sobre">
         <h1>Sobre</h1>
         <p>O site Horárias foi construído usando como base o micro framework Flask em Python para o site e a biblioteca Chart.js de JavaScript para geração dos gráficos das funções.</p>
         <h2>Como funciona?</h2>
         <p>Na página de funções, nós temos 3 funções hórarias, sendo essas a posição no MU (Movimento Uniforme), velocidade e espaço no MUV (Movimento Uniformemente Variado).<br>Abaixo temos as 3 equações respectivamente:<br><br>\(S(t) = S₀ + v.t\)<br>\(v(t) = v₀ + a.t\)<br>\(S(t) = S₀ + v₀.t + \frac{a}{2} .t²\)</p>
     </main>
-</body>
-</html>
+
+{% endblock %}

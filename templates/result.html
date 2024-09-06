@@ -64,3 +64,57 @@
     </main>
 </body>
 </html>
+
+{% extends "header.html" %}
+
+{% block head %}
+
+    <title>Gráfico</title>
+    <link rel="stylesheet" href="../static/funcoes.css">
+    <link rel="stylesheet" href="../static/result.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+{% endblock %}
+
+{% block body %}
+
+    <main>
+        <div class="graphic">
+            <canvas id="lineChart"></canvas>
+            <script>
+                var ctx = document.getElementById("lineChart");
+                new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: {{ label | safe}},
+                        datasets: [{
+                            label: {% if equacao == "Velocidade" %}"Velocidade ({{ unidade[0] }}/{{ unidade[1] }})"{% elif equacao == "Posição" %}"Posição ({{ unidade[0] }})"{% else %}"Espaço ({{ unidade[0] }})"{% endif %},
+                            data: {{ data | safe}},
+                            borderWidth: 2,
+                            borderColor: "white",
+                            backgroundColor: "white",
+                            color: "white"
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {beginAtZero: true}
+                        },
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: {% if equacao == "Velocidade" %}"Gráfico da velocidade em função do tempo"{% elif equacao == "Posição" %}"Gráfico da posição em função do tempo"{% else %}"Gráfico da posição em função do tempo"{% endif %},
+                                font: {
+                                    size: 20,
+                                    color: "#F9FAF8"
+                                }
+                    }
+                }
+                    }
+                });
+            </script>
+        </div>
+    </main>
+
+{% endblock %}
