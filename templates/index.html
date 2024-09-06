@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "header.html" %}
+
+{% block head %}
+
     <title>Início</title>
-    <link rel="stylesheet" href="../static/header.css">
     <link rel="stylesheet" href="../static/index.css">
-</head>
-<body>
-    <header class="header">
-        <ul class="navbar">
-            <li id="logo">Horárias</li>
-            <li><a class="link" href="/">Início</a></li>
-            <div class="dropdown">
-                <li id="funcoes">Funções</li>
-                <div class="content">
-                    <a class="link" href="/posicao">Posição</a>
-                    <a class="link" href="/velocidade">Velocidade</a>
-                    <a class="link" href="/espaco">Espaço</a>
-                </div>
-            </div>
-            <li id="sobre"><a class="link" href="/sobre">Sobre</a></li>
-        </ul>
-    </header>
+
+{% endblock %}
+
+{% block body %}
+
     <main class="main">
         <div class="text">
             <p class="big">Crie gráficos de funções horárias!</p>
@@ -30,7 +16,6 @@
             <a id="button" href="/posicao">Começar</a>
         </div>
         <!-- <div class="graphic"><img id="image" alt="exemplo de gráfico" src="https://images8.alphacoders.com/106/1061990.jpg"></div> -->
-        
     </main>
-</body>
-</html>
+
+{% endblock %}
