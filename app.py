@@ -1,44 +1,47 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request
 from math import ceil
 
 app = Flask(__name__)
-app.secret_key = "DJIKSAHDIWIMDIAMSID129109312093890SADO/;a/./ds.ad.sADhuASHDUHW*!@SI"
-app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
+
 @app.route("/sobre")
 def sobre():
     return render_template("sobre.html")
+
 
 @app.route("/posicao")
 def posicao():
     return render_template("posicao.html")
 
+
 @app.route("/velocidade")
 def velocidade():
     return render_template("velocidade.html")
+
 
 @app.route("/espaco")
 def espaco():
     return render_template("espaco.html")
 
+
 @app.route("/result", methods=["POST"])
 def result():
     equacao = ""
     data = []
-    unidade = request.form.get("seletor_unidade")
+    seletor_unidade = request.form.get("seletor_unidade")
 
-    if not unidade:
-        session["unidade"] = ["m", "s"]
+    if not seletor_unidade:
+        unidade = ["m", "s"]
     else:
-        session["unidade"] = ["km", "h"]
+        unidade = ["km", "h"]
 
     #caso o tempo seja omitido de alguma forma, há um valor padrão
     tempo = [_ for _ in range(11)]
-    label = [str(_)+session["unidade"][1] for _ in range(11)]
+    label = [str(_)+unidade[1] for _ in range(11)]
 
     #criação do eixo do tempo no gráfico + tratamento de valores com vírgula
     t = request.form.get("t")
@@ -50,10 +53,10 @@ def result():
             t = t[1::]
 
         t_arredondado = ceil(float(t))
-        label = [str(_)+session["unidade"][1] for _ in range(0, t_arredondado)]
+        label = [str(_)+unidade[1] for _ in range(0, t_arredondado)]
         tempo = [_ for _ in range(0, t_arredondado)]
 
-        label.append(t+session["unidade"][1])
+        label.append(t+unidade[1])
         tempo.append(float(t))
 
     #tratamento dos valores para que o python possa ler sem problemas
@@ -98,9 +101,14 @@ def result():
             vXt = float(v)*t
             data.append(float(s0) + vXt)
 
-    return render_template("result.html", label=label, data=data, equacao=equacao, unidade=session.get("unidade"))
+    return render_template("result.html", label=label, data=data, equacao=equacao, unidade=unidade)
+
 
 #essa rota serve para lidar com erros que só vão acontecer caso tentem editar o html
 @app.errorhandler(500)
 def error_page(error):
     return render_template("error.html"), 500
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
