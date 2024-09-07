@@ -12,16 +12,34 @@
 
     <main class="main">
         <h1>Espaço</h1>
-        <form id="unidade" action="/espaco" method="get">
-            <h2>\(S(t) = S₀ + v₀.t + \frac{a}{2} .t²\)</h2>
-            <button name="unidade">{{ unidade[0] }}/{{ unidade[1] }}</button>
-        </form>
-        
+
         <form class="form" action="/result" method="post">
-            <input type="number" step="0.01" name="s0" placeholder="Posição inicial ({{ unidade[0] }})" autocomplete="off" autofocus required>
-            <input type="number" step="0.01" name="v0" placeholder="Velocidade inicial ({{ unidade[0] }}/{{ unidade[1] }})" autocomplete="off" required>
-            <input type="number" step="0.01" name="ac" placeholder="Aceleração ({{ unidade[0] }}/{{ unidade[1] }}²)" autocomplete="off" required>
-            <input type="number" step="0.01" name="t" placeholder="Tempo ({{ unidade[1] }})" autocomplete="off">
+            <div class="unidade">
+                <h2>\(S(t) = S₀ + v₀.t + \frac{a}{2} .t²\)</h2>
+                <label class="switch">
+                    <input type="checkbox" name="seletor_unidade">
+                    <span class="slider round"></span>
+                </label> 
+                <span id="unidade">m/s</span>
+            </div>
+            <script>
+                const seletor = document.querySelector('input[name="seletor_unidade"]');
+                const unidade = document.getElementById("unidade");
+    
+                seletor.addEventListener("change", function() {
+                    if (seletor.checked) {
+                        unidade.textContent = "km/h"
+                    }
+                    else {
+                        unidade.textContent = "m/s"
+                    }
+                });
+            </script>
+
+            <input type="number" step="0.01" name="s0" placeholder="Posição inicial" autocomplete="off" autofocus required>
+            <input type="number" step="0.01" name="v0" placeholder="Velocidade inicial" autocomplete="off" required>
+            <input type="number" step="0.01" name="ac" placeholder="Aceleração" autocomplete="off" required>
+            <input type="number" step="0.01" name="t" placeholder="Tempo" autocomplete="off">
             <button>Gerar Gráfico</button>
         </form>
     </main>

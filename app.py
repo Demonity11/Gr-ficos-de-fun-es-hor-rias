@@ -7,7 +7,6 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 @app.route("/")
 def index():
-    session["unidade"] = ["km", "h"]
     return render_template("index.html")
 
 @app.route("/sobre")
@@ -16,35 +15,27 @@ def sobre():
 
 @app.route("/posicao")
 def posicao():
-    if request.method == "GET":
-        if session["unidade"][0] == "m":
-            session["unidade"] = ["km", "h"]
-        else:
-            session["unidade"] = ["m", "s"]
-    return render_template("posicao.html", unidade=session.get("unidade"))
+    return render_template("posicao.html")
 
 @app.route("/velocidade")
 def velocidade():
-    if request.method == "GET":
-        if session["unidade"][0] == "m":
-            session["unidade"] = ["km", "h"]
-        else:
-            session["unidade"] = ["m", "s"]
-    return render_template("velocidade.html", unidade=session.get("unidade"))
+    return render_template("velocidade.html")
 
 @app.route("/espaco")
 def espaco():
-    if request.method == "GET":
-        if session["unidade"][0] == "m":
-            session["unidade"] = ["km", "h"]
-        else:
-            session["unidade"] = ["m", "s"]
-    return render_template("espaco.html", unidade=session.get("unidade"))
+    return render_template("espaco.html")
 
 @app.route("/result", methods=["POST"])
 def result():
     equacao = ""
     data = []
+    unidade = request.form.get("seletor_unidade")
+
+    if not unidade:
+        session["unidade"] = ["m", "s"]
+    else:
+        session["unidade"] = ["km", "h"]
+
     #caso o tempo seja omitido de alguma forma, há um valor padrão
     tempo = [_ for _ in range(11)]
     label = [str(_)+session["unidade"][1] for _ in range(11)]
