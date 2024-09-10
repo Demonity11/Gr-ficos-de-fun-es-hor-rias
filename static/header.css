@@ -65,6 +65,10 @@ ul {
     margin-right: 10%;
 }
 
+#funcoes {
+    display: flex;
+}
+
 .content {
     position: absolute;
     display: none;
