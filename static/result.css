@@ -1,6 +1,10 @@
 .graphic {
     display: flex;
     flex-wrap: nowrap;
-    margin-left: 11%;
-    margin-right: 11%;
+    padding-left: 11%;
+    padding-right: 11%;
+}
+
+.header {
+    padding-bottom: 3.5%;
 }

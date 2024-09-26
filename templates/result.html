@@ -24,23 +24,32 @@
                             label: {% if equacao == "Velocidade" %}"Velocidade ({{ unidade[0] }}/{{ unidade[1] }})"{% elif equacao == "Posição" %}"Posição ({{ unidade[0] }})"{% else %}"Espaço ({{ unidade[0] }})"{% endif %},
                             data: {{ data | safe}},
                             borderWidth: 2,
-                            borderColor: "white",
-                            backgroundColor: "white",
-                            color: "white"
+                            borderColor: "#F9FAF8",
+                            backgroundColor: "#F9FAF8",
+                            color: "#F9FAF8"
                         }]
                     },
                     options: {
                         scales: {
-                            y: {beginAtZero: true}
+                            y: {beginAtZero: true,
+                                ticks: {
+                                    color: "#F9FAF8"
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: "#F9FAF8"
+                                }
+                            }
                         },
                         responsive: true,
                         plugins: {
                             title: {
                                 display: true,
+                                color: "#F9FAF8",
                                 text: {% if equacao == "Velocidade" %}"Gráfico da velocidade em função do tempo"{% elif equacao == "Posição" %}"Gráfico da posição em função do tempo"{% else %}"Gráfico da posição em função do tempo"{% endif %},
                                 font: {
                                     size: 20,
-                                    color: "#F9FAF8"
                                 }
                     }
                 }
